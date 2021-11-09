@@ -15,7 +15,6 @@ void HASH_TABLE_FORMER(){
 }
 
 
-
 void reReg_char(char& a){
     if (a >= 'A' && a <='Z')a += 32;
     if (a >= 'À' && a <= 'ß')a +=32;

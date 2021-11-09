@@ -9,7 +9,7 @@
 // Here, we're including our systems,
 #include "WorkingClass.h"
 #include "Functions.h"
-
+#include "ORDER_FUNCTIONS.h"
 using namespace std;
 
 
@@ -47,19 +47,51 @@ int main()
 
     in.close();
 
+
+    queue<int> order;
+    string answer, word;
     while(true){
-        string answer;
-        int t = rand()&110;
-        cout << "Напишите перевод: " << fwr[t].translate << endl;
-        getline(cin, answer);
-        NumbersReg_delete(answer);
-        if (!StringCheck(answer, fwr[t].word)){
-            cout << "Верно будет ->" << fwr[t].word;
-            }else cout <<"Правильно!";
-        answer.clear();
-        cout << endl;
+        order_forming_BYTHEFOREIGN(fwr, order, 110);
+        while(order.empty() != true){
+            int index = order.front();
+            order.pop();
+
+            cout << fwr[index].translate << endl;
+            getline(cin , answer);
+            NumbersReg_delete(answer);
+
+            if ( StringCheck(fwr[index].word, answer) == true )
+                {
+
+                fwr[index].relevant -=0.05;
+                cout << "ПРАВИЛЬНО!" << endl;
+
+
+                } else
+                    {
+
+                    fwr[index].relevant += 0.1;
+                    cout << "Верно будет -> " << fwr[index].word  << endl;
+
+                    }
+            cout << endl;
+            answer.clear();
+            }
 
     }
+    /*
+      getline(cin, answer);
+        NumbersReg_delete(answer);
+     if (!StringCheck(answer, fwr[t].word)){
+            cout << "Верно будет ->" << fwr[t].word;
+            fwr[t].relevant += 0.05;
+            }else{
+                fwr[t].relevant -=0.1;
+                cout <<"Правильно!";
+                    }
+        answer.clear();
+        cout << endl;
+        */
 
 
 

@@ -5,6 +5,8 @@
 using namespace std;
 
 
+
+
 class ForeignWords{
     public:
         string  word = "", translate = "";
@@ -83,6 +85,8 @@ class ForeignWords{
 /// distructor needs tilda before its name
     private:
 };
+
+
 
 
 #endif // WORKINGCLASS_H_INCLUDED
